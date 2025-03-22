@@ -48,6 +48,7 @@ public class EmployeeDAOImpl implements IEmployeeDAO{
         return res;
     }
 
+
     private boolean executeQuery(String query){
         boolean res = false;
         try{
@@ -88,21 +89,25 @@ public class EmployeeDAOImpl implements IEmployeeDAO{
         ResultSet rs = null;
         try {
             Class.forName(DRIVER);
-            connection = DriverManager.getConnection(URL,USER,PASSWORD);
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            stmt = connection.createStatement(); // Inicializar stmt aquí
             rs = stmt.executeQuery(query);
             while (rs.next()) {
                 employee = new Employee();
                 /*Retrieve one employee details and store it in employee object*/
                 employee.setId(rs.getString("id"));
                 employee.setName(rs.getString("name"));
-                employee.setEmail((rs.getString("email")));
-                employee.setPhone((rs.getString("phone")));
+                employee.setEmail(rs.getString("email"));
+                employee.setPhone(rs.getString("phone"));
                 //add each employee to the list
                 list.add(employee);
             }
             connection.close();
-        }catch(SQLException sqlex){System.out.println(sqlex);}
-        catch(ClassNotFoundException ex){System.out.println(ex);}
+        } catch(SQLException sqlex) {
+            System.out.println(sqlex);
+        } catch(ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
         return list;
     }
 }

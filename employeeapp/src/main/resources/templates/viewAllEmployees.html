@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Todos los Empleados</title>
+    <link href="./css/empStyle.css" rel="stylesheet">
+</head>
+<body>
+<div class="topnav">
+    <a href="index.html">Agregar Empleado</a>
+    <a href="updateEmployee.html">Actualizar Empleado</a>
+    <a href="deleteEmployee.html">Eliminar Empleado</a>
+    <a href="findbyid.html">Buscar Empleado por ID</a>
+    <a href="findall">Ver Todos los Empleados</a>
+</div>
+
+<div class="content">
+    <h1>EMPLOYEE APP</h1>
+    <h2>Employee List</h2>
+    <table cellspacing="3" cellpadding="3" border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.email}"></td>
+            <td th:text="${employee.phone}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
