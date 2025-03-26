@@ -12,16 +12,18 @@
     <a href="updateEmployee.html">Actualizar Empleado</a>
     <a href="deleteEmployee.html">Eliminar Empleado</a>
     <a href="#">Buscar Empleado por ID</a>
-    <a href="findall">Ver Todos los Empleados</a></div>
+    <a href="viewAllEmployees.html">Ver Todos los Empleados</a>
+</div>
 
 <div class="content">
     <h1>EMPLOYEE APP</h1>
     <h2>Ingrese el ID del empleado que desea eliminar</h2>
-    <form action="/DeleteEmployee" method="POST">
+    <form action="/employeeapp/delete/{id}" method="GET">
+        <input type="hidden" name="_method" value="DELETE">
         <table cellspacing="3" cellpadding="3" border="1">
             <tr>
-                <td align="right"> ID Empleado: </td>
-                <td><input type="text" name="emp_id"></td>
+                <td align="right">ID Empleado:</td>
+                <td><input type="text" name="id"></td>
             </tr>
         </table>
         <input type="submit" value="Eliminar">
